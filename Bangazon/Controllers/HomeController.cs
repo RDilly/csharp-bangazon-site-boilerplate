@@ -15,6 +15,11 @@ namespace Bangazon.Controllers
             return View();
         }
 
+        public IActionResult ProductType()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
