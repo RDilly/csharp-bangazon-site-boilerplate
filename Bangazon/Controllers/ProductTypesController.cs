@@ -33,8 +33,14 @@ namespace Bangazon.Controllers
                 return NotFound();
             }
 
+
+
             var productType = await _context.ProductType
-                .FirstOrDefaultAsync(m => m.ProductTypeId == id);
+            .Include(s => s.Products)
+            
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.ProductTypeId == id);
+
             if (productType == null)
             {
                 return NotFound();
