@@ -20,8 +20,19 @@ namespace Bangazon.Controllers
         }
 
         // GET: ProductTypes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
+
+
+
+
+            var productType = await _context.ProductType
+            .Include(s => s.Products)
+
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.ProductTypeId == id);
+
+
             return View(await _context.ProductType.ToListAsync());
         }
 
