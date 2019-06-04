@@ -9,13 +9,3 @@
     <p>I'm just here to get bought by Jeff Bezos.</p>
 </div>
 
-@foreach (var item in Model)
-{
-<div class="card" style="width: 20rem; text-align:center;">
-    <a href="../../Product/Details/@Html.DisplayFor(model => item.ProductId)">
-        <h4 class="card-title">@Html.DisplayFor(model => item.Title)</h4>
-    </a>
-    <p class="card-text">@Html.DisplayFor(model => item.Description)</p>
-    <p class="card-text">@Html.DisplayFor(model => item.Price)</p>
-</div>
-    }
