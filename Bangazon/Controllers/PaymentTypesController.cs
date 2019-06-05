@@ -17,17 +17,22 @@ namespace Bangazon.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
         private readonly ApplicationDbContext _context;
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public PaymentTypesController(ApplicationDbContext context)
+        public PaymentTypesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+          
         }
 
         [Authorize]
         // GET: PaymentTypes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.PaymentType.Include(p => p.User);
+            var CurrentUser = await GetCurrentUserAsync();
+
+            var applicationDbContext = _context.PaymentType.Include(p => p.User).Where(p => p.User.Id == CurrentUser.Id);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -62,11 +67,14 @@ namespace Bangazon.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PaymentTypeId,DateCreated,Description,AccountNumber,UserId")] PaymentType paymentType)
+        public async Task<IActionResult> Create([Bind("PaymentTypeId,DateCreated,Description,AccountNumber")] PaymentType paymentType)
         {
+            var user = await GetCurrentUserAsync();
             if (ModelState.IsValid)
             {
                 _context.Add(paymentType);
+                paymentType.User = user;
+                paymentType.UserId = user.Id;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
