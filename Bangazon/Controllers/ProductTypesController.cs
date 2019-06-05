@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Bangazon.Data;
 using Bangazon.Models;
 
@@ -13,12 +15,14 @@ namespace Bangazon.Controllers
     public class ProductTypesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public ProductTypesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        [Authorize]
         // GET: ProductTypes
         public async Task<IActionResult> Index()
         {

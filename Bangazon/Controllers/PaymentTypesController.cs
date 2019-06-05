@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bangazon.Data;
@@ -12,6 +14,8 @@ namespace Bangazon.Controllers
 {
     public class PaymentTypesController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+
         private readonly ApplicationDbContext _context;
 
         public PaymentTypesController(ApplicationDbContext context)
@@ -19,6 +23,7 @@ namespace Bangazon.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: PaymentTypes
         public async Task<IActionResult> Index()
         {

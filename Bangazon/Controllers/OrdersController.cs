@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +14,8 @@ namespace Bangazon.Controllers
 {
     public class OrdersController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+
         private readonly ApplicationDbContext _context;
 
         public OrdersController(ApplicationDbContext context)
@@ -19,6 +23,7 @@ namespace Bangazon.Controllers
             _context = context;
         }
 
+        [Authorize]
         // GET: Orders
         public async Task<IActionResult> Index()
         {
