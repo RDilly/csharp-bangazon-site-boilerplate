@@ -79,11 +79,13 @@ namespace Bangazon.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {
+                var user = new ApplicationUser
+                {
+                    UserName = Input.Email,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     StreetAddress = Input.StreetAddress,
-                    UserName = Input.Email, Email = Input.Email
+                    Email = Input.Email
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
