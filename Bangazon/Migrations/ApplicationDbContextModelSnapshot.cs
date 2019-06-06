@@ -81,9 +81,9 @@ namespace Bangazon.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "51f59306-21a1-4555-bcf7-b04fcafae457",
+                            Id = "448fcb4e-80b6-4e3d-a8d5-6bb954f4f097",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c15a6958-e34f-4b91-a40b-340ad8cf9038",
+                            ConcurrencyStamp = "e347f2a9-8f19-4310-b219-f22d5f66fc1d",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "Admina",
@@ -91,9 +91,9 @@ namespace Bangazon.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELe/u8ZIgUYGIDo1Fd9PK+iXtbs0vCjZ5lwUc316uUd4MTZzOzyz6WhHWe+cZX8xyA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN/JB0BEUFxfRwo1TkjHzyXSKgeNh6tKOoWVzTA/srCEOYMenSl+SiVgyy98OqJ6UQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "259bed13-6e96-41cd-8407-a66b667fc2a4",
+                            SecurityStamp = "39f33b3f-2ed1-4d8f-9828-da8af0b30921",
                             StreetAddress = "123 Infinity Way",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
@@ -130,7 +130,7 @@ namespace Bangazon.Migrations
                         {
                             OrderId = 1,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = "51f59306-21a1-4555-bcf7-b04fcafae457"
+                            UserId = "448fcb4e-80b6-4e3d-a8d5-6bb954f4f097"
                         });
                 });
 
@@ -201,7 +201,7 @@ namespace Bangazon.Migrations
                             AccountNumber = "86753095551212",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "American Express",
-                            UserId = "51f59306-21a1-4555-bcf7-b04fcafae457"
+                            UserId = "448fcb4e-80b6-4e3d-a8d5-6bb954f4f097"
                         },
                         new
                         {
@@ -209,7 +209,7 @@ namespace Bangazon.Migrations
                             AccountNumber = "4102948572991",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Discover",
-                            UserId = "51f59306-21a1-4555-bcf7-b04fcafae457"
+                            UserId = "448fcb4e-80b6-4e3d-a8d5-6bb954f4f097"
                         });
                 });
 
@@ -262,7 +262,7 @@ namespace Bangazon.Migrations
                             ProductTypeId = 1,
                             Quantity = 100,
                             Title = "Kite",
-                            UserId = "51f59306-21a1-4555-bcf7-b04fcafae457"
+                            UserId = "448fcb4e-80b6-4e3d-a8d5-6bb954f4f097"
                         },
                         new
                         {
@@ -273,7 +273,7 @@ namespace Bangazon.Migrations
                             ProductTypeId = 2,
                             Quantity = 5,
                             Title = "Wheelbarrow",
-                            UserId = "51f59306-21a1-4555-bcf7-b04fcafae457"
+                            UserId = "448fcb4e-80b6-4e3d-a8d5-6bb954f4f097"
                         });
                 });
 

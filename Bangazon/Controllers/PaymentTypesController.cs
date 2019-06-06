@@ -17,10 +17,11 @@ namespace Bangazon.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public PaymentTypesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public PaymentTypesController(ApplicationDbContext ctx,
+                                  UserManager<ApplicationUser> userManager)
         {
-            _context = context;
             _userManager = userManager;
+            _context = ctx;
         }
 
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
@@ -71,15 +72,17 @@ namespace Bangazon.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PaymentTypeId,DateCreated,Description,AccountNumber,UserId")] PaymentType paymentType)
         {
-
-            if (ModelState.IsValid)
-            {
+            ModelState.Remove("UserId");
+            var user = await GetCurrentUserAsync();
+           if (ModelState.IsValid)
+           {
                 _context.Add(paymentType);
+                paymentType.User = user;
+                paymentType.UserId = user.Id;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", paymentType.UserId);
-            return View(paymentType);
+           }
+           return View(paymentType);
         }
     
 
