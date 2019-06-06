@@ -73,6 +73,7 @@ namespace Bangazon.Controllers
         public async Task<IActionResult> Create([Bind("PaymentTypeId,DateCreated,Description,AccountNumber,UserId")] PaymentType paymentType)
         {
             ModelState.Remove("UserId");
+            ModelState.Remove("User");
             var user = await GetCurrentUserAsync();
            if (ModelState.IsValid)
            {
